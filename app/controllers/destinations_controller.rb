@@ -3,6 +3,15 @@ class DestinationsController < ApplicationController
   end
 
   def index
-    @destination = params[:destination].downcase
   end
+
+  def show
+    @destination = Destination.find(params[:id])
+  end
+
+  def search
+    @query = params[:q].downcase
+    @destinations = Destination.where("name LIKE ?", "%#{@query}%")
+  end
+
 end

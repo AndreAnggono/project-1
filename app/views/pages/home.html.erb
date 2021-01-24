@@ -5,9 +5,10 @@
   <p>Welcome <%= @current_user.first_name %></p>
 <% end %>
 
-<%= form_tag destinations_path, :method => :get do %>
-  <%= label_tag :destination, "Search for Destination:" %>
-  <%= search_field_tag :destination %>
-
-  <%= submit_tag "Search"%>
+<%= form_with url: destinations_search_path, :method => "get", :local => true, :skip_enforcing_utf8 => true do |f| %>
+  <%= f.label :q, "Search for Destination:" %>
+  <%= f.search_field :q %>
+  <%= f.submit "Search", name: nil%>
 <% end %>
+
+<%= image_tag 'profile/profile.jpg' %>

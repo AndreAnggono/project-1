@@ -1,0 +1,4 @@
+<h2>Results matching "<%= @query %>"</h2>
+<% @destinations.each { |destination| %>
+  <p><%= link_to destination.name.titlecase, destination_path(destination.id) %></p>
+<% } %>

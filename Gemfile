@@ -31,6 +31,8 @@ gem 'bootstrap', '~> 5.0.0.beta1'
 # jQuery
 gem 'jquery-rails'
 
+gem 'geocoder'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

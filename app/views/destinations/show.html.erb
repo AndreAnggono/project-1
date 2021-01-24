@@ -1,0 +1,51 @@
+<h2><%= @destination.name.titlecase %></h2>
+<p><%= pluralize @destination.rating, 'star' %> |     
+   <%= pluralize @destination.reviews.count, 'Review' %>
+</p>
+
+<h3>Overview</h3>
+<p><%= @destination.overview %></p>
+
+<table>
+  <tr>
+    <th>Address</th>
+    <td><%= @destination.address.titlecase %></td>
+  </tr>
+  <tr>
+    <th>Contact</th>
+    <td><%= @destination.contact %></td>
+  </tr>
+  <tr>
+    <th>Website</th>
+    <td><%= link_to @destination.website, @destination.website, :target => "_blank" %></td>
+  </tr>
+</table>
+
+<div id="mapid">
+
+</div>
+
+<h3>Reviews</h3>
+<% @destination.reviews.each { |review| %>
+<div class="review">
+  <table>
+    <tr>
+      <th>Name</th>
+      <td><%= "#{review.user.first_name.titlecase} #{review.user.last_name[0].upcase}." %></td>
+    </tr>
+    <tr>
+      <th>Rating</th>
+      <td><%= review.rating %></td>
+    </tr>
+    <tr>
+      <th>Date of Experience</th>
+      <td><%= review.date_of_experience.strftime('%A, %B %e, %Y') %></td>
+    </tr>
+    <tr>
+      <th>Review</th>
+      <td><%= review.description %></td>
+    </tr>
+  </table>
+</div>
+<hr>
+<% } %>

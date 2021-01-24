@@ -1,13 +1,13 @@
 User.destroy_all
-u1 = User.create :first_name => 'andre', :last_name => 'caleb', :email => 'ac@ga.co', :password => 'chicken', :admin => true
-u2 = User.create :first_name => 'bill', :last_name => 'murray', :email => 'bmy@ga.co', :password => 'chicken'
-u3 = User.create :first_name => 'craig', :last_name => 'gibson', :email => 'cg@ga.co', :password => 'chicken'
+u1 = User.create :username => 'ac', :first_name => 'andre', :last_name => 'caleb', :email => 'ac@ga.co', :password => 'chicken', :admin => true
+u2 = User.create :username => 'purplehippo', :first_name => 'bill', :last_name => 'murray', :email => 'bmy@ga.co', :password => 'chicken'
+u3 = User.create :username => 'thegrinch',:first_name => 'craig', :last_name => 'gibson', :email => 'cg@ga.co', :password => 'chicken'
 puts "#{User.count} users"
 
 Destination.destroy_all
-d1 = Destination.create :name => 'general assembly sydney', :address => 'the podium building, 1 market st, sydney nsw 2000', :contact => '+61283182912', :website => 'https://generalassemb.ly/sydney', :overview => 'Learning centre providing bootcamps for Software Engineering, UX, Data Science and many more'
-d2 = Destination.create :name => 'sydney opera house', :address => 'bennelong point, sydney nsw 2000', :contact => '+61292507111', :website => 'https://www.sydneyoperahouse.com/', :overview => 'Landmark, skyline-dominating arts centre for opera, theatre, music and dance, plus guided tours.'
-d3 = Destination.create :name => 'gami chicken & beer', :address => '178 clarence st, sydney nsw 2000', :contact => '+61292623000', :website => 'https://www.gamichicken.com.au', :overview => 'Korean Restaurant serving quality korean fried chicken and beer'
+d1 = Destination.create :name => 'general assembly sydney', :address => 'the podium building, 1 market st, sydney nsw 2000', :contact => '+61283182912', :website => 'https://generalassemb.ly/sydney', :overview => 'Learning centre providing bootcamps for Software Engineering, UX, Data Science and many more', :rating => 5.0
+d2 = Destination.create :name => 'sydney opera house', :address => 'bennelong point, sydney nsw 2000', :contact => '+61292507111', :website => 'https://www.sydneyoperahouse.com/', :overview => 'Landmark, skyline-dominating arts centre for opera, theatre, music and dance, plus guided tours.', :rating => 4.0
+d3 = Destination.create :name => 'gami chicken & beer', :address => '178 clarence st, sydney nsw 2000', :contact => '+61292623000', :website => 'https://www.gamichicken.com.au', :overview => 'Korean Restaurant serving quality korean fried chicken and beer', :rating => 3.0
 puts "#{Destination.count} destinations"
 
 Review.destroy_all
