@@ -26,7 +26,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 
 # Boostrap
-gem 'bootstrap', '~> 5.0.0.beta1'
+gem 'bootstrap'
 
 # jQuery
 gem 'jquery-rails'

@@ -7,7 +7,7 @@ class DestinationsController < ApplicationController
 
   def show
     @destination = Destination.find(params[:id])
-    session[:destination_id] = @destination.id unless @current_user.present?
+    session[:destination_id] = @destination.id
   end
 
   def search

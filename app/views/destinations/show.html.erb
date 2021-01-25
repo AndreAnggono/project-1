@@ -53,6 +53,9 @@
       <td><%= review.description %></td>
     </tr>
   </table>
+  <% if review.user.id == @current_user.id %>
+    <%= button_to "Edit Review", edit_review_path(review.id), :method => 'get' %>
+  <% end %>
 </div>
 <hr>
 <% } %>
