@@ -1,14 +1,8 @@
 <h1>Toldya.</h1>
 <p>A community driven destination review site.</p>
 
-<% if @current_user.present? %>
-  <p>Welcome <%= @current_user.first_name %></p>
-<% end %>
-
 <%= form_with url: destinations_search_path, :method => "get", :local => true, :skip_enforcing_utf8 => true do |f| %>
   <%= f.label :q, "Search for Destination:" %>
-  <%= f.search_field :q %>
+  <%= f.search_field :q, :required => true %>
   <%= f.submit "Search", name: nil%>
 <% end %>
-
-<%= image_tag 'profile/profile.jpg' %>

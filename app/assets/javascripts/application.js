@@ -18,7 +18,7 @@
 
 $(document).ready(function () {
 	console.log("it works");
-	$("body").css({ backgroundColor: "pink" });
+	// $("body").css({ backgroundColor: "pink" });
 	const mymap = L.map("mapid").setView([-33.8636785, 151.2036298], 13);
 
 	L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {

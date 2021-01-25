@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get '/destinations/search/' => 'destinations#search'
 
   resources :reviews
-  resources :users, :only => [:new, :create]
+  resources :users
   resources :destinations
 
 

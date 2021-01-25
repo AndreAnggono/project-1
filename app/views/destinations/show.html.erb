@@ -26,12 +26,19 @@
 </div>
 
 <h3>Reviews</h3>
+
+<% if @current_user.present? %>
+  <%= button_to 'Write a review', new_review_path, :method => 'get' %>
+<% else %>
+  <%= button_to 'Write a review', login_path, :method => 'get' %>
+<% end %>
+
 <% @destination.reviews.each { |review| %>
 <div class="review">
   <table>
     <tr>
       <th>Name</th>
-      <td><%= "#{review.user.first_name.titlecase} #{review.user.last_name[0].upcase}." %></td>
+      <td><%= link_to "#{review.user.first_name.titlecase} #{review.user.last_name[0].upcase}.", user_path(review.user_id) %></td>
     </tr>
     <tr>
       <th>Rating</th>

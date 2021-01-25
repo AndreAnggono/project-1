@@ -1,1 +1,36 @@
-Welcome Back <%= @user.first_name %>
+<h2><%= "#{@user.first_name} #{@user.last_name.first}".titlecase  %>.</h2>
+<h3>@<%= @user.username %> | <%= @user.reviews.count %> Contributions | <%= @user.kudos %> Kudos</h3>
+
+<%= image_tag @user.avatar, :class => 'profile_photo' %>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <td><%= "#{@user.first_name} #{@user.last_name}".titlecase %></td>
+  </tr>
+  <tr>
+    <th>Location</th>
+    <td><%= @user.city %></td>
+  </tr>
+  <tr>
+    <th>Joined in</th>
+    <td><%= @user.created_at.strftime('%B %Y') %></td>
+  </tr>
+</table>
+
+<% if @user.id == session[:user_id]%>
+  <%= button_to 'Edit Profile', edit_user_path(session[:user_id]), :method => 'get' %>
+<% end %>
+
+<h2>Reviews</h2>
+<% @user.reviews.each { |review| %>
+  <div class="review">
+    <h3><%= "#{@user.first_name} #{@user.last_name.first}".titlecase %>. wrote a review</h3>
+    <h4><%= review.created_at.strftime('%B %Y') %></h4>
+    <h4><%= review.rating %> stars</h4>
+    <p><%= review.description %></p>
+    <h5>Date of experience <%= review.date_of_experience.strftime('%B %Y') %></h5>
+    <%= link_to review.destination.name.titlecase, destination_path(review.destination_id) %>
+    <hr>
+  </div>
+<% } %>
