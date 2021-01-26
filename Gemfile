@@ -33,6 +33,7 @@ gem 'jquery-rails'
 
 gem 'geocoder'
 
+gem 'sprockets'
 gem 'sprockets-es6'
 gem 'babel-transpiler'
 

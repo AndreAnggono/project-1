@@ -15,6 +15,9 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require_tree .
+//= require "action_view/railtie"
+//=require "sprockets/railtie"
+//= require 'sprockets/es6'
 
 $(document).ready(function () {
 	console.log("it works");
