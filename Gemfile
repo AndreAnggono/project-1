@@ -33,6 +33,9 @@ gem 'jquery-rails'
 
 gem 'geocoder'
 
+gem 'sprockets-es6'
+gem 'babel-transpiler'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
