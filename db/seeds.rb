@@ -31,3 +31,7 @@ d3.reviews << r7 << r8 << r9
 u1.reviews << r1 << r4 << r7
 u2.reviews << r2 << r5 << r8
 u3.reviews << r3 << r6 << r9
+
+
+
+# Destination.create :name => 'Test', :address => '201 kent street, sydney nsw 2000', :contact => '+61283182912', :website => 'https://google.com', :overview => 'Amazing place to wind down'
