@@ -14,7 +14,7 @@
   </div>
   <div class="form-group">
     <%= f.label :date_of_experience %>
-    <%= f.date_field :date_of_experience, :required => true %>
+    <%= f.date_field :date_of_experience, :required => true, :max => Date.today %>
   </div>
   <div class="form-group">
     <%= f.label :description %>
