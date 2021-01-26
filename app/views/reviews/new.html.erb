@@ -7,4 +7,8 @@
   </ol>
 <% end %>
 
+<% if @existing_review.present? %>
+  <p>An existing review already exists for that date. <%= link_to 'Edit Review Instead?', edit_review_path(@existing_review.first.id) %></p>
+<% end %>
+
 <%= render :partial => 'form' %>

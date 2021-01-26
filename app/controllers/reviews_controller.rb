@@ -7,11 +7,19 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    @review = Review.new review_params
-    @review.update :destination_id => session[:destination_id], :user_id => @current_user.id
-    
-    if @review.save
-      redirect_to destination_path(session[:destination_id])
+    @review = Review.new
+    date_of_exp = params[:review][:date_of_experience].to_date
+    @existing_review = Review.where(:user_id => @current_user.id, :destination_id => session[:destination_id], :date_of_experience => date_of_exp.beginning_of_day..date_of_exp.end_of_day)
+
+    unless @existing_review.present?
+      @review.update review_params
+      @review.update :destination_id => session[:destination_id], :user_id => @current_user.id
+
+      if @review.save
+        redirect_to destination_path(session[:destination_id])
+      else
+        render :new
+      end
     else
       render :new
     end
@@ -48,5 +56,9 @@ class ReviewsController < ApplicationController
 
   def check_for_destination
     redirect_to root_path unless session[:destination_id].present?
+  end
+
+  def check_for_existing_reviews
+
   end
 end
