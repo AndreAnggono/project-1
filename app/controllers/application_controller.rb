@@ -8,6 +8,9 @@ class ApplicationController < ActionController::Base
   end
 
   def check_for_login
-    redirect_to login_path unless @current_user.present?
+    unless @current_user.present?
+      session[:destination_path] = request.url
+      redirect_to login_path
+    end
   end
 end

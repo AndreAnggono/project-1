@@ -9,8 +9,12 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new review_params
     @review.update :destination_id => session[:destination_id], :user_id => @current_user.id
-    @review.save
-    redirect_to destination_path(session[:destination_id])
+    
+    if @review.save
+      redirect_to destination_path(session[:destination_id])
+    else
+      render :new
+    end
   end
 
   def edit
@@ -25,6 +29,15 @@ class ReviewsController < ApplicationController
   def update
     review = Review.find(params[:id])
     review.update review_params
+    redirect_to destination_path(session[:destination_id])
+  end
+
+  def destroy
+    # To prevent users deleting other users reviews
+    if @current_user.id == Review.find(params[:id]).user.id
+      review = Review.find(params[:id])
+      review.destroy
+    end
     redirect_to destination_path(session[:destination_id])
   end
 

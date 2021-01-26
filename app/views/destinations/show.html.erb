@@ -27,13 +27,10 @@
 
 <h3>Reviews</h3>
 
-<% if @current_user.present? %>
-  <%= button_to 'Write a review', new_review_path, :method => 'get' %>
-<% else %>
-  <%= button_to 'Write a review', login_path, :method => 'get' %>
-<% end %>
+<%= button_to 'Write a review', new_review_path, :method => 'get' %>
 
-<% @destination.reviews.each { |review| %>
+
+<% @destination.reviews.sort.each { |review| %>
 <div class="review">
   <table>
     <tr>
@@ -53,7 +50,7 @@
       <td><%= review.description %></td>
     </tr>
   </table>
-  <% if review.user.id == @current_user.id %>
+  <% if @current_user.present? && review.user.id == @current_user.id %>
     <%= button_to "Edit Review", edit_review_path(review.id), :method => 'get' %>
   <% end %>
 </div>

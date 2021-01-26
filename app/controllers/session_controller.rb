@@ -4,12 +4,15 @@ class SessionController < ApplicationController
 
   def create
     user = User.find_by :username => params[:username]
-  
+    
     if user.present? && user.authenticate(params[:password])
       session[:user_id] = user.id
-
-      if session[:destination_id].present?
-        redirect_to new_review_path
+      
+      # Redirecting traffic to original request when request is interrupted by login page
+      if session[:destination_path].present?
+        original_path = session[:destination_path]
+        session[:destination_path] = nil
+        redirect_to original_path
       else
         redirect_to root_path
       end
