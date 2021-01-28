@@ -3,7 +3,6 @@ class DestinationsController < ApplicationController
   end
 
   def create
-    # raise 'he'
     destination = Destination.new destination_params
   
     if destination.save
@@ -18,13 +17,6 @@ class DestinationsController < ApplicationController
 
   def show
     @destination = Destination.find(params[:id])
-    # @coords = find_coords(@destination.name)
-    # @review = Review.new
-    
-    # Checking whether the cached data is more than 30 days old
-    # if @destination.updated_at < 30.days.ago
-    #   query_api(@destination.name)
-    # end
     
     # Counting the average rating from all reviews
     if @destination.reviews.count.zero?
@@ -40,7 +32,6 @@ class DestinationsController < ApplicationController
   end
 
   def search
-    # raise 'he'
     @query = params[:q].downcase
     @destinations = Destination.where("name LIKE ?", "%#{@query}%")
     
@@ -70,9 +61,4 @@ class DestinationsController < ApplicationController
     }
     report
   end
-
-  # def find_coords(search_value)
-  #   query = Geocoder.search(search_value).select{|destination| destination.country == "Australia" }
-  #   {:latitude => query.first.latitude, :longitude => query.first.longitude}
-  # end
 end
