@@ -49,6 +49,10 @@ class ReviewsController < ApplicationController
     redirect_to destination_path(session[:destination_id])
   end
 
+  def like
+    raise 'hell'
+  end
+
   private
   def review_params
     params.require(:review).permit(:rating, :date_of_experience, :description)
@@ -56,9 +60,5 @@ class ReviewsController < ApplicationController
 
   def check_for_destination
     redirect_to root_path unless session[:destination_id].present?
-  end
-
-  def check_for_existing_reviews
-
   end
 end

@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get '/destinations/search/' => 'destinations#search'
 
   resources :reviews
+  post '/reviews/:id/like' => 'reviews#like', :as => 'like_review'
+
   resources :users
   resources :destinations
 

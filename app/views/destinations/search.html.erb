@@ -1,4 +1,20 @@
 <h2>Results matching "<%= @query %>"</h2>
 <% @destinations.each { |destination| %>
-  <p><%= link_to destination.name.titlecase, destination_path(destination.id) %></p>
+  <%= link_to destination_path(destination.id), :action => 'go' do %>
+    <div class="search-destination">
+      <h3><%= destination.name.titlecase %></h3>
+      <p><%= destination.address %></p>
+    </div>
+  <% end %>
 <% } %>
+
+<% if @result.present? %>
+ <% @result.each{ |r| %>
+    <%= link_to destinations_path(:destination => r), :method => :post do %>
+      <div class="search-destination">
+        <h3><%= r[:name].titlecase %></h3>
+        <p><%= r[:address] %></p>
+      </div>
+    <% end %>  
+  <% } %>
+<% end %>

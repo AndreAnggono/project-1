@@ -1,10 +1,20 @@
+<script>
+  const latitude = <%= @destination.latitude %>
+  const longitude = <%= @destination.longitude %>
+  const destName = "<%= @destination.name.titlecase %>"
+</script>
+
 <h2><%= @destination.name.titlecase %></h2>
 <p><%= pluralize @destination.rating, 'star' %> |     
    <%= pluralize @destination.reviews.count, 'Review' %>
 </p>
 
 <h3>Overview</h3>
-<p><%= @destination.overview %></p>
+<% if @destination.overview.present? %>
+  <p><%= @destination.overview %></p>
+<% else %>
+  <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt voluptatibus nulla vitae, dolorem illo quaerat dicta doloribus ducimus facilis qui adipisci earum reprehenderit itaque eligendi inventore consequatur debitis libero impedit.A rem ea doloribus minima. Tempora tempore molestiae sit, accusantium, vero quod fugiat aliquid rerum beatae ducimus officiis voluptatem est voluptas! Eligendi reiciendis maxime voluptates expedita esse quod, soluta dolores?</p>
+<% end %>
 
 <table>
   <tr>
@@ -13,11 +23,23 @@
   </tr>
   <tr>
     <th>Contact</th>
-    <td><%= @destination.contact %></td>
+    <td>
+        <% if @destination.contact.present? %>
+          <%= @destination.contact %>
+        <% else %>
+          +61 999 999 999
+        <% end %>
+    </td>
   </tr>
   <tr>
     <th>Website</th>
-    <td><%= link_to @destination.website, @destination.website, :target => "_blank" %></td>
+    <td>
+        <% if @destination.website.present? %>
+          <%= link_to @destination.website, @destination.website, :target => "_blank" %>
+        <% else %>
+          https://www.placeholder.website
+        <% end %>
+    </td>
   </tr>
 </table>
 
@@ -26,9 +48,7 @@
 </div>
 
 <h3>Reviews</h3>
-
 <%= button_to 'Write a review', new_review_path, :method => 'get' %>
-
 
 <% @destination.reviews.sort.each { |review| %>
 <div class="review">
@@ -50,9 +70,14 @@
       <td><%= review.description %></td>
     </tr>
   </table>
-  <% if @current_user.present? && review.user.id == @current_user.id %>
-    <%= button_to "Edit Review", edit_review_path(review.id), :method => 'get' %>
-  <% end %>
+  <% if @current_user.present? %>
+    <% if review.user.id == @current_user.id  %>
+      <%= button_to "Edit Review", edit_review_path(review.id), :method => 'get' %>
+    <% else %>
+      <%= button_tag 'Kudos' %>
+    <% end %>
+  <% end %>    
+
 </div>
 <hr>
 <% } %>

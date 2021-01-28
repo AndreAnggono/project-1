@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: dvrdeiill
+  api_key: '877265321814372'
+  api_secret: 41CIwH174mWO6ATL8787Q-B9OE0
+  enhance_image_tag: true
+  static_file_support: false
+production:
+  cloud_name: dvrdeiill
+  api_key: '877265321814372'
+  api_secret: 41CIwH174mWO6ATL8787Q-B9OE0
+  enhance_image_tag: true
+  static_file_support: true
+test:
+  cloud_name: dvrdeiill
+  api_key: '877265321814372'
+  api_secret: 41CIwH174mWO6ATL8787Q-B9OE0
+  enhance_image_tag: true
+  static_file_support: false

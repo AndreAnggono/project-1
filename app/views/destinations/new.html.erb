@@ -1,2 +1,9 @@
-<h1>Destinations#new</h1>
-<p>Find me in app/views/destinations/new.html.erb</p>
+<h2>More results matching "<%= @query %>"</h2>
+<% @result.each_with_index { |r, index| %>
+  <%= link_to destinations_path(:destination => r), :method => :post do %>
+    <div class="new-destination">
+      <h2><%= r[:name] %></h2>
+      <p><%= r[:address] %></p>
+    </div>
+  <% end %>  
+<% } %>

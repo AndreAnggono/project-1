@@ -1,7 +1,7 @@
 $(document).ready(function () {
 	console.log("it works");
 	// $("body").css({ backgroundColor: "pink" });
-	const mymap = L.map("mapid").setView([-33.8636785, 151.2036298], 13);
+	const mymap = L.map("mapid").setView([latitude, longitude], 17);
 
 	L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
 		attribution:
@@ -13,6 +13,6 @@ $(document).ready(function () {
 		accessToken: "pk.eyJ1IjoieDd6Yml0IiwiYSI6ImNra2FlaGdsMjBxY3oydm8yMGFvMjFubDMifQ.VPMdtzmHNFPnfsoCesLSUQ"
 	}).addTo(mymap);
 
-	const marker = L.marker([-33.8636785, 151.2036298]).addTo(mymap);
-	marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
+	const marker = L.marker([latitude, longitude]).addTo(mymap);
+	marker.bindPopup(`<b>${destName}</b>`).openPopup();
 });
