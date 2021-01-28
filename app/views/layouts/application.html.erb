@@ -10,20 +10,52 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div class="container-fluid">
+          <%= link_to 'Toldya.', root_path, :class => 'navbar-brand' %> 
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <%= form_with url: destinations_search_path, :method => "get", :local => true, :skip_enforcing_utf8 => true, :class => 'd-flex flex-grow-1' do |f| %>
+              <%= f.search_field :q, :required => true, :placeholder => "Search", :class => 'form-control me-2' %>
+              <%# <%= f.submit "Search", name: nil%> %>
+            <% end %>
+            
+            <li class="nav-item dropdown" id="profile-nav">
+              <a class="nav-link dropdown-toggle btn-outline-light" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                  <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                </svg>
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <% if @current_user.present? %>
+                <li><span id="navdrop-user"><%=  "#{@current_user.username.downcase} ( #{@current_user.kudos} )" %></span></li>
+                <li>
+                    <%= link_to "View Profile", user_path(@current_user.id), :class => 'dropdown-item' %>
+                </li>
+                <li><hr class="dropdown-divider"></li>
+                <li><%= link_to "Sign Out", login_path, :method => 'delete', :class => 'dropdown-item' %></li>
+              <% else %>
+                <li><%= link_to 'Signup', new_user_path, :class => 'dropdown-item' %></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><%= link_to 'Sign In', login_path, :class => 'dropdown-item' %></li>
+                
+              <% end %>
+              </ul>
+            </li>
+            
+            
+          </div>
+        </div>
+     </nav>
   </head>
 
   <body>
-  <nav>
-    <%= link_to 'Home', root_path %> | 
-    <% if @current_user.present? %>
-      <%= link_to "#{@current_user.username.downcase} ( #{@current_user.kudos} )", user_path(@current_user.id) %> | 
-      <%= link_to "Logout", login_path, :method => 'delete' %>
-    <% else %>
-      <%= link_to 'Signup', new_user_path %> | 
-      <%= link_to 'Login', login_path %>
-    <% end %>
-    
-  </nav>
-    <%= yield %>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>

@@ -5,9 +5,9 @@ u3 = User.create :username => 'thegrinch',:first_name => 'craig', :last_name => 
 puts "#{User.count} users"
 
 Destination.destroy_all
-d1 = Destination.create :name => 'general assembly sydney', :address => 'the podium building, 1 market st, sydney nsw 2000', :contact => '+61283182912', :website => 'https://generalassemb.ly/sydney', :overview => 'Learning centre providing bootcamps for Software Engineering, UX, Data Science and many more', :rating => 5.0
-d2 = Destination.create :name => 'sydney opera house', :address => 'bennelong point, sydney nsw 2000', :contact => '+61292507111', :website => 'https://www.sydneyoperahouse.com/', :overview => 'Landmark, skyline-dominating arts centre for opera, theatre, music and dance, plus guided tours.', :rating => 4.0
-d3 = Destination.create :name => 'gami chicken & beer', :address => '178 clarence st, sydney nsw 2000', :contact => '+61292623000', :website => 'https://www.gamichicken.com.au', :overview => 'Korean Restaurant serving quality korean fried chicken and beer', :rating => 3.0
+d1 = Destination.create :name => 'general assembly sydney', :address => 'the podium building, 1 market st, sydney nsw 2000', :contact => '+61283182912', :website => 'https://generalassemb.ly/sydney', :overview => 'Learning centre providing bootcamps for Software Engineering, UX, Data Science and many more', :rating => 5.0, :latitude => -33.8712676, :longitude => 151.2045322
+d2 = Destination.create :name => 'sydney opera house', :address => 'bennelong point, sydney nsw 2000', :contact => '+61292507111', :website => 'https://www.sydneyoperahouse.com/', :overview => 'Landmark, skyline-dominating arts centre for opera, theatre, music and dance, plus guided tours.', :rating => 4.0, :latitude => -33.856756837263184, :longitude => 151.21519851719373
+d3 = Destination.create :name => 'gami chicken & beer', :address => '178 clarence st, sydney nsw 2000', :contact => '+61292623000', :website => 'https://www.gamichicken.com.au', :overview => 'Korean Restaurant serving quality korean fried chicken and beer', :rating => 3.0, :latitude => -33.87032130941675, :longitude => 151.20567808424545
 puts "#{Destination.count} destinations"
 
 Review.destroy_all

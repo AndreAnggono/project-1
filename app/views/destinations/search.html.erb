@@ -1,10 +1,11 @@
-<h2>Results matching "<%= @query %>"</h2>
+<h2 class="mb-4 mt-4">Results matching "<%= @query %>"</h2>
 <% @destinations.each { |destination| %>
   <%= link_to destination_path(destination.id), :action => 'go' do %>
-    <div class="search-destination">
+    <div class="search-destination mb-4">
       <h3><%= destination.name.titlecase %></h3>
-      <p><%= destination.address %></p>
+      <p><%= destination.address.titlecase %></p>
     </div>
+    <hr>
   <% end %>
 <% } %>
 
@@ -13,8 +14,9 @@
     <%= link_to destinations_path(:destination => r), :method => :post do %>
       <div class="search-destination">
         <h3><%= r[:name].titlecase %></h3>
-        <p><%= r[:address] %></p>
+        <p><%= r[:address].titlecase %></p>
       </div>
+      <hr>
     <% end %>  
   <% } %>
 <% end %>

@@ -1,0 +1,32 @@
+#profile-nav {
+  display: flex
+}
+
+ul.dropdown-menu {
+  left: -68px;
+}
+a.navbar-brand {
+  font-size: 1.8rem;
+}
+
+#navdrop-user {
+  margin-left: 16px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.error {
+  color: red;
+}
+
+.search-destination {
+  // border-bottom: 2px solid pink;
+}
+
+.search-destination:hover {
+  // background-color: rgba(211, 211, 211, 0.1);
+  color: red;
+  
+}
