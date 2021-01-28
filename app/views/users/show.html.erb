@@ -1,8 +1,9 @@
 <h2 class="mt-5"><%= "#{@user.first_name} #{@user.last_name.first}".titlecase  %>.</h2>
 <h4>@<%= @user.username %> | <%= @user.reviews.count %> Contributions | <%= @user.kudos %> Kudos</h4>
 
-<%= image_tag @user.avatar, :class => 'profile_photo' %>
-
+<div class="text-center">
+  <%= image_tag @user.avatar, :class => 'profile_photo mt-5' %>
+</div>
 <table class="table my-5">
   <tr>
     <th>Name</th>
@@ -19,17 +20,19 @@
 </table>
 
 <% if @user.id == session[:user_id]%>
-  <%= button_to 'Edit Profile', edit_user_path(session[:user_id]), :method => 'get', :class => "btn btn-primary" %>
+  <div class="text-center">
+    <%= button_to 'Edit Profile', edit_user_path(session[:user_id]), :method => 'get', :class => "btn btn-warning w-50" %>
+  </div>
 <% end %>
 
-<h2 class="mt-5">Reviews</h2>
+<h2 class="mt-5 mb-3">Reviews</h2>
 <% @user.reviews.each { |review| %>
   <div class="review">
     <h3><%= "#{@user.first_name} #{@user.last_name.first}".titlecase %>. wrote a review</h3>
     <h4><%= review.created_at.strftime('%B %Y') %></h4>
     <h4><%= review.rating %> stars</h4>
-    <p><%= review.description %></p>
-    <h5>Date of experience <%= review.date_of_experience.strftime('%B %Y') %></h5>
+    <p class="lead"><%= review.description %></p>
+    <h5>Date of experience: <%= review.date_of_experience.strftime('%B %Y') %></h5>
     <%= link_to review.destination.name.titlecase, destination_path(review.destination_id) %>
     <hr>
   </div>
