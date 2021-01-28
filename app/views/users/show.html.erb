@@ -3,7 +3,7 @@
 
 <%= image_tag @user.avatar, :class => 'profile_photo' %>
 
-<table>
+<table class="table my-5">
   <tr>
     <th>Name</th>
     <td><%= "#{@user.first_name} #{@user.last_name}".titlecase %></td>
@@ -19,7 +19,7 @@
 </table>
 
 <% if @user.id == session[:user_id]%>
-  <%= button_to 'Edit Profile', edit_user_path(session[:user_id]), :method => 'get' %>
+  <%= button_to 'Edit Profile', edit_user_path(session[:user_id]), :method => 'get', :class => "btn btn-primary" %>
 <% end %>
 
 <h2 class="mt-5">Reviews</h2>

@@ -1,7 +1,7 @@
 User.destroy_all
-u1 = User.create :username => 'ac', :first_name => 'andre', :last_name => 'caleb', :email => 'ac@ga.co', :password => 'chicken', :admin => true
-u2 = User.create :username => 'purplehippo', :first_name => 'bill', :last_name => 'murray', :email => 'bmy@ga.co', :password => 'chicken'
-u3 = User.create :username => 'thegrinch',:first_name => 'craig', :last_name => 'gibson', :email => 'cg@ga.co', :password => 'chicken'
+u1 = User.create :username => 'ac', :first_name => 'andre', :last_name => 'caleb', :email => 'ac@ga.co', :password => 'chicken', :city => 'Sydney', :admin => true
+u2 = User.create :username => 'purplehippo', :first_name => 'bill', :last_name => 'murray', :email => 'bmy@ga.co', :password => 'chicken', :city => "Melbourne"
+u3 = User.create :username => 'thegrinch',:first_name => 'craig', :last_name => 'gibson', :email => 'cg@ga.co', :password => 'chicken', :city => "Perth"
 puts "#{User.count} users"
 
 Destination.destroy_all
@@ -31,7 +31,3 @@ d3.reviews << r7 << r8 << r9
 u1.reviews << r1 << r4 << r7
 u2.reviews << r2 << r5 << r8
 u3.reviews << r3 << r6 << r9
-
-
-
-# Destination.create :name => 'Test', :address => '201 kent street, sydney nsw 2000', :contact => '+61283182912', :website => 'https://google.com', :overview => 'Amazing place to wind down'

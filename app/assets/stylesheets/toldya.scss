@@ -1,5 +1,16 @@
 #profile-nav {
-  display: flex
+  display: flex;
+  position: absolute;
+  right: 0;
+}
+
+#navbarCollapse {
+  justify-content: center;
+}
+
+#navbarCollapse > form {
+  max-width: 50%;
+  transform: translateX(-50px);
 }
 
 ul.dropdown-menu {
@@ -41,5 +52,42 @@ a {
 }
 
 #main-cover {
-  margin-top: 30%
+  // margin-top: 120px;
+  transform: translateY(55%);
+}
+
+#main-cover h1 {
+  font-size: 4rem;
+}
+
+#main-cover p {
+  font-size: 2rem;
+}
+
+.container {
+  max-width: 900px;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+	transform: translateX(-50%);
+}
+
+@media (max-width: 767px) {
+  #profile-nav {
+    position: relative;
+    justify-content: flex-end;
+  }
+
+  #navbarCollapse > form {
+    max-width: none;
+    transform: none;
+  }
+
+  ul.dropdown-menu {
+    left: 0;
+  }
+
 }
