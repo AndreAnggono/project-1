@@ -4,7 +4,7 @@
   const destName = "<%= @destination.name.titlecase %>"
 </script>
 
-<h2><%= @destination.name.titlecase %></h2>
+<h2 class="mt-5"><%= @destination.name.titlecase %></h2>
 <p><%= pluralize @destination.rating, 'star' %> |     
    <%= pluralize @destination.reviews.count, 'Review' %>
 </p>
@@ -16,7 +16,7 @@
   <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt voluptatibus nulla vitae, dolorem illo quaerat dicta doloribus ducimus facilis qui adipisci earum reprehenderit itaque eligendi inventore consequatur debitis libero impedit.A rem ea doloribus minima. Tempora tempore molestiae sit, accusantium, vero quod fugiat aliquid rerum beatae ducimus officiis voluptatem est voluptas! Eligendi reiciendis maxime voluptates expedita esse quod, soluta dolores?</p>
 <% end %>
 
-<table>
+<table class='table'>
   <tr>
     <th>Address</th>
     <td><%= @destination.address.titlecase %></td>
@@ -43,16 +43,21 @@
   </tr>
 </table>
 
-<div id="mapid">
+<div id="mapid" class="mt-5">
 
 </div>
 
-<h3>Reviews</h3>
-<%= button_to 'Write a review', new_review_path, :method => 'get' %>
+
+<div class="text-center mt-5">
+  <%= button_to 'Write a review', new_review_path, :method => 'get', :class => 'btn btn-lg btn-primary mb-5 w-50' %>
+</div>
+
+<h3 class="mb-5">Reviews</h3>
 
 <% @destination.reviews.sort.each { |review| %>
-<div class="review">
-  <table>
+<div class="review mb-5">
+  <table class='table table-light'>
+  <tbody class=''>
     <tr>
       <th>Name</th>
       <td><%= link_to "#{review.user.first_name.titlecase} #{review.user.last_name[0].upcase}.", user_path(review.user_id) %></td>
@@ -69,15 +74,17 @@
       <th>Review</th>
       <td><%= review.description %></td>
     </tr>
+    </tbody>
   </table>
+  
   <% if @current_user.present? %>
     <% if review.user.id == @current_user.id  %>
-      <%= button_to "Edit Review", edit_review_path(review.id), :method => 'get' %>
-    <% else %>
-      <%= button_tag 'Kudos' %>
+      <div class="text-center">
+        <%= button_to "Edit Review", edit_review_path(review.id), :method => 'get', :class => 'btn btn-warning w-50' %>
+      </div>
     <% end %>
   <% end %>    
 
 </div>
-<hr>
+
 <% } %>

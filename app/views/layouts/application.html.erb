@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class='h-100'>
   <head>
     <title>Toldya.</title>
     <%= csrf_meta_tags %>
@@ -19,8 +19,8 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <%= form_with url: destinations_search_path, :method => "get", :local => true, :skip_enforcing_utf8 => true, :class => 'd-flex flex-grow-1' do |f| %>
-              <%= f.search_field :q, :required => true, :placeholder => "Search", :class => 'form-control me-2' %>
-              <%# <%= f.submit "Search", name: nil%> %>
+              <%= f.search_field :q, :required => true, :placeholder => "Search", :class => 'form-control me-2', :maxlength => 50 %>
+              
             <% end %>
             
             <li class="nav-item dropdown" id="profile-nav">
@@ -53,7 +53,7 @@
      </nav>
   </head>
 
-  <body>
+   <body>
     <div class="container">
       <%= yield %>
     </div>

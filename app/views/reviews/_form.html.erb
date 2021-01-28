@@ -1,24 +1,36 @@
 <%= form_for @review do |f| %>
-  <div class="form-group">
-    <%= f.label :rating %>
-    <%= f.label :rating, "1", :value => "1"%>
-    <%= f.radio_button :rating, "1.0"  %>
-    <%= f.label :rating, "2", :value => "2" %>
-    <%= f.radio_button :rating, "2.0" %>
-    <%= f.label :rating, "3", :value => "3" %>
-    <%= f.radio_button :rating, "3.0" %>
-    <%= f.label :rating, "4", :value => "4" %>
-    <%= f.radio_button :rating, "4.0" %>
-    <%= f.label :rating, "5", :value => "5" %>
-    <%= f.radio_button :rating, "5.0", :required => true %>
+    <%= f.label :rating, :class => 'form-label mt-3' %>
+    <br>
+    <div class="form-check mb-2">
+      <%= f.label :rating, "1", :value => "1", :class => 'form-check-label'%>
+      <%= f.radio_button :rating, "1.0", :class => 'form-check-input'  %>
+    </div>
+    <div class="form-check mb-2 ms-3">
+      <%= f.label :rating, "2", :value => "2", :class => 'form-check-label' %>
+      <%= f.radio_button :rating, "2.0", :class => 'form-check-input' %>
+    </div>
+    <div class="form-check mb-2 ms-3">
+      <%= f.label :rating, "3", :value => "3", :class => 'form-check-label' %>
+      <%= f.radio_button :rating, "3.0", :class => 'form-check-input' %>
+    </div>
+    <div class="form-check mb-2 ms-3">
+      <%= f.label :rating, "4", :value => "4", :class => 'form-check-label' %>
+      <%= f.radio_button :rating, "4.0", :class => 'form-check-input' %>
+    </div>
+    <div class="form-check mb-2 ms-3">
+      <%= f.label :rating, "5", :value => "5", :class => 'form-check-label' %>
+      <%= f.radio_button :rating, "5.0", :class => 'form-check-input', :required => true %>
+    </div>
+  <div class="form-group my-3">
+    <%= f.label :date_of_experience, :class => 'form-label' %>
+    <%= f.date_field :date_of_experience, :class => 'form-control', :required => true, :max => Date.today, :value => @review.date_of_experience || Date.today %>
   </div>
-  <div class="form-group">
-    <%= f.label :date_of_experience %>
-    <%= f.date_field :date_of_experience, :required => true, :max => Date.today, :value => @review.date_of_experience || Date.today %>
+  <div class="form-group my-4">
+    <%= f.label :description, :class => 'form-label' %>
+    <%= f.text_area :description, :class => 'form-control', :required => true %>
   </div>
-  <div class="form-group">
-    <%= f.label :description %>
-    <%= f.text_area :description, :required => true %>
-  </div>
-  <%= f.submit %>
+  <div class="row">
+    <div class="col">
+      <%= f.submit nil, :class => 'btn btn-primary w-100 mb-3' %>
+    </div>
 <% end %>

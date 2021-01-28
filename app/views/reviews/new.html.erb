@@ -1,4 +1,4 @@
-<h2>New review for <%= Destination.find(session[:destination_id]).name.titlecase %> </h2>
+<h2 class="mt-5">New review for <%= Destination.find(session[:destination_id]).name.titlecase %> </h2>
 <% if @review.errors.any? %>
   <ol>
     <% @review.errors.full_messages.each { |msg| %>
@@ -12,3 +12,4 @@
 <% end %>
 
 <%= render :partial => 'form' %>
+</div>

@@ -1,5 +1,5 @@
-<h2 class="mb-4 mt-4">Results matching "<%= @query %>"</h2>
-<% @destinations.each { |destination| %>
+<h2 class="my-4">Results matching "<%= @query %>"</h2>
+<% @destinations.sort.each { |destination| %>
   <%= link_to destination_path(destination.id), :action => 'go' do %>
     <div class="search-destination mb-4">
       <h3><%= destination.name.titlecase %></h3>
@@ -10,7 +10,7 @@
 <% } %>
 
 <% if @result.present? %>
- <% @result.each{ |r| %>
+ <% @result.sort.each{ |r| %>
     <%= link_to destinations_path(:destination => r), :method => :post do %>
       <div class="search-destination">
         <h3><%= r[:name].titlecase %></h3>
