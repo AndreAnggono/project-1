@@ -10,7 +10,7 @@
 <% } %>
 
 <% if @result.present? %>
- <% @result.sort.each{ |r| %>
+ <% @result.each{ |r| %>
     <%= link_to destinations_path(:destination => r), :method => :post do %>
       <div class="search-destination">
         <h3><%= r[:name].titlecase %></h3>
