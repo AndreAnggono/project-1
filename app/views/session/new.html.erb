@@ -20,11 +20,14 @@
     <%= submit_tag "Continue", :class => 'btn btn-primary w-50 mb-3'%>
     <br>
     <p>Don't have an account? <%= link_to 'Sign up', new_user_path %></p>
-    <pre>———   or   ———</ppre>
-<% end %>
-    <%= button_to "", "/auth/google_oauth2", :class => 'google-signin btn btn-lg' %>
-  </div>
+    <pre>———   or   ———</pre>
+  <% end %>
+    <%= button_to "", "/auth/google_oauth2", :class => 'google-signin btn btn-lg mb-3' %>
+    <%= button_to "/auth/github", :class => 'btn btn-block btn-social btn-github' do %>
+      <span class="fa fa-github"></span> Sign in with GitHub
+    <% end %>
 
+  </div>
 
 
 

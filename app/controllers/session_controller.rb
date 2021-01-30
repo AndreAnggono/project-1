@@ -29,6 +29,7 @@ class SessionController < ApplicationController
   end
 
   def omniauth
+    # raise 'hell'
     user = User.create_from_omniauth(auth)
     
     if user.valid?

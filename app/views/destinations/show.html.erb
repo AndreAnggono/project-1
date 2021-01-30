@@ -55,7 +55,7 @@
     <tbody class=''>
       <tr>
         <th>Name</th>
-        <td><%= link_to "#{review.user.first_name.titlecase} #{review.user.last_name[0].upcase}.", user_path(review.user_id) %></td>
+        <td><%= link_to "#{review.user.first_name.titlecase} #{review.user.last_name[0].upcase if review.user.last_name.present?}.", user_path(review.user_id) %></td>
       </tr>
       <tr>
         <th>Rating</th>

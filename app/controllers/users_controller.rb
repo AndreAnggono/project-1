@@ -47,6 +47,7 @@ class UsersController < ApplicationController
     # To prevent rogue post delete request and only allow the actual user to delete their profile
     if @current_user.id == params[:id].to_i
       user = User.find(params[:id])
+      user.reviews.destroy_all
       user.destroy
       session[:destination_id] = nil
     end
