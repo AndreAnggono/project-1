@@ -27,4 +27,21 @@ class SessionController < ApplicationController
     session[:destination_id] = nil
     redirect_to root_path
   end
+
+  def omniauth
+    user = User.create_from_omniauth(auth)
+    
+    if user.valid?
+      session[:user_id] = user.id
+      redirect_to root_path
+    else
+      raise 'hell'
+      # redirect_to
+    end
+  end
+
+  private
+  def auth
+    request.env['omniauth.auth']
+  end
 end

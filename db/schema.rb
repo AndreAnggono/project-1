@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_27_065359) do
+ActiveRecord::Schema.define(version: 2021_01_30_023804) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,8 @@ ActiveRecord::Schema.define(version: 2021_01_27_065359) do
     t.text "city"
     t.integer "kudos", default: 0
     t.text "username"
+    t.string "uid"
+    t.string "provider"
   end
 
 end

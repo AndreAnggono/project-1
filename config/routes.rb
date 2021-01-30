@@ -11,10 +11,10 @@ Rails.application.routes.draw do
   resources :users
   resources :destinations
 
-
-
   # For login / logout
+  get '/auth/:provider/callback' => 'session#omniauth'
   get '/login' => 'session#new'         # login form
+  get '/login/email' => 'session#email'
   post '/login' => 'session#create'     # process the login
   delete '/login' => 'session#destroy'  # logout
 end

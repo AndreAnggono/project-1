@@ -25,15 +25,17 @@
   </div>
 <% end %>
 
-<h2 class="mt-5 mb-3">Reviews</h2>
-<% @user.reviews.each { |review| %>
-  <div class="review">
-    <h3><%= "#{@user.first_name} #{@user.last_name.first}".titlecase %>. wrote a review</h3>
-    <h4><%= review.created_at.strftime('%B %Y') %></h4>
-    <h4><%= review.rating %> stars</h4>
-    <p class="lead"><%= review.description %></p>
-    <h5>Date of experience: <%= review.date_of_experience.strftime('%B %Y') %></h5>
-    <%= link_to review.destination.name.titlecase, destination_path(review.destination_id) %>
-    <hr>
-  </div>
-<% } %>
+<% if @user.reviews.present? %>
+  <h2 class="mt-5 mb-3">Reviews</h2>
+  <% @user.reviews.each { |review| %>
+    <div class="review">
+      <h3><%= "#{@user.first_name} #{@user.last_name.first}".titlecase %>. wrote a review</h3>
+      <h4><%= review.created_at.strftime('%B %Y') %></h4>
+      <h4><%= review.rating %> stars</h4>
+      <p class="lead"><%= review.description %></p>
+      <h5>Date of experience: <%= review.date_of_experience.strftime('%B %Y') %></h5>
+      <%= link_to review.destination.name.titlecase, destination_path(review.destination_id) %>
+      <hr>
+    </div>
+  <% } %>
+<% end %>
