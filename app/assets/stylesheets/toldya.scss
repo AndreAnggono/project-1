@@ -102,7 +102,17 @@ footer {
 }
 
 @media (max-width: 510px) {
-  #main-cover p {
-    font-size: 1rem;
+  #main-cover {
+    transform: translateY(74%);
   }
+  
+  #main-cover p {
+    font-size: 1.3rem;
+  }
+
+  #main-cover a {
+    max-width: 1.1rem;
+  }
+
+  
 }
